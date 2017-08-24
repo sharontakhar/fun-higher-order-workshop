@@ -1,80 +1,55 @@
-var identity = function () {};
+const hof = {};
 
-var identityf = function () {};
+hof.identity = function () {};
 
-var add = function () {};
+hof.identityf = function () {};
 
-var sub = function () {};
+hof.add = function () {};
 
-var mul = function () {};
+hof.sub = function () {};
 
-var addf = function () {};
+hof.mul = function () {};
 
-var liftf = function () {};
+hof.addf = function () {};
 
-var curry = function () {};
+hof.liftf = function () {};
 
-var inc = function () {};
+hof.curry = function () {};
 
-var twice = function () {};
+hof.inc = function () {};
 
-var reverse = function () {};
+hof.twice = function () {};
 
-var composeu = function () {};
+hof.reverse = function () {};
 
-var composeb = function () {};
+hof.composeu = function () {};
 
-var limit = function () {};
+hof.composeb = function () {};
 
-var from = function () {};
+hof.limit = function () {};
 
-var to = function () {};
+hof.from = function () {};
 
-var fromTo = function () {};
+hof.to = function () {};
 
-var element = function () {};
+hof.fromTo = function () {};
 
-var collect = function () {};
+hof.element = function () {};
 
-var filter = function () {};
+hof.collect = function () {};
 
-var concat = function () {};
+hof.filter = function () {};
 
-var gensymf = function () {};
+hof.concat = function () {};
 
-var gensymff = function () {};
+hof.gensymf = function () {};
 
-var fibonaccif = function () {};
+hof.gensymff = function () {};
 
-var counter = function () {};
+hof.fibonaccif = function () {};
 
-var revokable = function () {};
+hof.counter = function () {};
 
-module.exports = {
-  identity: identity,
-  identityf: identityf,
-  add: add,
-  sub: sub,
-  mul: mul,
-  addf: addf,
-  liftf: liftf,
-  curry: curry,
-  inc: inc,
-  twice: twice,
-  reverse: reverse,
-  composeu: composeu,
-  composeb: composeb,
-  limit: limit,
-  from: from,
-  to: to,
-  fromTo: fromTo,
-  element: element,
-  collect: collect,
-  filter: filter,
-  concat: concat,
-  gensymf: gensymf,
-  gensymff: gensymff,
-  fibonaccif: fibonaccif,
-  counter: counter,
-  revokable: revokable
-};
+hof.revokable = function () {};
+
+module.exports = hof;

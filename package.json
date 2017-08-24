@@ -1,19 +1,24 @@
 {
-  "name": "October-wk02-higher-order-fun",
+  "name": "higher-order-fun",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
-    "url": "https://github.com/northcoders/October-wk02-higher-order-fun.git",
+    "url": "https://github.com/northcoders/w02-higher-order-fun.git",
     "type": "git"
   },
-  "author": "maurogestoso <maurogestoso@gmail.com>",
+  "author": "Mauro Gestoso <mauro@northcoders.com>",
   "license": "MIT",
-  "dependencies": {
-    "chai": "^3.5.0",
-    "sinon": "^1.17.7"
-  },
+  "dependencies": {},
   "scripts": {
-    "test": "mocha spec/*.spec.js",
-    "lint": "eslint ./"
+    "test": "mocha --bail spec/*.spec.js",
+    "lint": "eslint ./",
+    "posttest": "npm run lint"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^4.5.0",
+    "husky": "^0.14.3",
+    "mocha": "^3.5.0",
+    "sinon": "^1.17.7"
   }
 }
