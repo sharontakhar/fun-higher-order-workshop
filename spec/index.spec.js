@@ -20,6 +20,18 @@ describe('higher order functions', function () {
       expect(hof.identity(obj)).to.equal(obj);
     });
   });
+  describe.only('identityf', function () {
+    it('is a function', function () {
+      expect(hof.identityf).to.be.a('function');
+    });
+    it('returns a function', function () {
+      expect(hof.identityf()).to.be.a('function');
+    });
+    it('returns a function that in turn returns the passed argument', function () {
+      var three = hof.identityf(3);
+      expect(three()).to.equal(3);
+    });
+  });
   describe('binaries', function () {
     describe('add', function () {
       it('is a function', function () {
@@ -46,18 +58,7 @@ describe('higher order functions', function () {
       });
     });
   });
-  describe('identityf', function () {
-    it('is a function', function () {
-      expect(hof.identityf).to.be.a('function');
-    });
-    it('returns a function', function () {
-      expect(hof.identityf()).to.be.a('function');
-    });
-    it('returns a function that in turn returns the passed argument', function () {
-      var three = hof.identityf(3);
-      expect(three()).to.equal(3);
-    });
-  });
+
   describe('addf', function () {
     it('is a function', function () {
       expect(hof.addf).to.be.a('function');

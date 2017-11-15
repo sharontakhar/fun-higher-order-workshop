@@ -11,7 +11,15 @@
 1. Write an *identity* function that takes an argument
 and returns that same argument.
 
-2. Write three binary functions, `add`, `sub` and `mul` that
+2. Write a function `identityf` that takes an argument and
+returns a function that returns that argument.
+
+``` javascript
+var three = identityf(3)
+three() // 3
+```
+
+3. Write three binary functions, `add`, `sub` and `mul` that
 take two numbers and return their sum, difference and product respectively.
 
 ```javascript
@@ -20,13 +28,6 @@ sub(3, 4) // -1
 mul(3, 4) // 12
 ```
 
-3. Write a function `identityf` that takes an argument and
-returns a function that returns that argument.
-
-``` javascript
-var three = indentyf(3)
-three() // 3
-```
 
 4. Write a function `addf` that adds from two invocations.
 

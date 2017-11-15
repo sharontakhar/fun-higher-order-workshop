@@ -52,4 +52,4 @@ hof.counter = function () {};
 
 hof.revokable = function () {};
 
-module.exports = hof;
+module.exports = {hof,};
