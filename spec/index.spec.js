@@ -16,11 +16,11 @@ describe('higher order functions', function () {
       expect(hof.identity(null)).to.be.null;
     });
     it('returns the reference that was passed to it', function () {
-      var obj = [1, 2, 3];
+      const obj = [1, 2, 3];
       expect(hof.identity(obj)).to.equal(obj);
     });
   });
-  describe.only('identityf', function () {
+  describe('identityf', function () {
     it('is a function', function () {
       expect(hof.identityf).to.be.a('function');
     });
@@ -28,7 +28,7 @@ describe('higher order functions', function () {
       expect(hof.identityf()).to.be.a('function');
     });
     it('returns a function that in turn returns the passed argument', function () {
-      var three = hof.identityf(3);
+      const three = hof.identityf(3);
       expect(three()).to.equal(3);
     });
   });
@@ -78,13 +78,12 @@ describe('higher order functions', function () {
       expect(hof.liftf()).to.be.a('function');
     });
     it('returns a function that returns a function', function () {
-      expect(hof.liftf()).to.be.a('function');
+      expect(hof.liftf()()).to.be.a('function');
     });
     it('makes a binary function callable with 2 invocations', function () {
-      var subf = hof.liftf(hof.sub);
-      expect(subf(3)(2)).to.equal(5);
-
-      var mulf = hof.liftf(hof.mul);
+      const subf = hof.liftf(hof.sub);
+      expect(subf(3)(2)).to.equal(1);
+      const mulf = hof.liftf(hof.mul);
       expect(mulf(5)(9)).to.equal(45);
     });
   });
@@ -97,7 +96,7 @@ describe('higher order functions', function () {
     });
     it('curries a binary function with the passed argument', function () {
       expect(hof.curry(hof.add, 3)(2)).to.equal(5);
-      expect(hof.curry(hof.sub, 6)(8)).to.equal(-2);
+      expect(hof.curry(hof.sub, 6)(8)).to.equal(2);
     });
     describe('ADVANCED', function () {
       it('works for any number of arguments', function () {
@@ -121,13 +120,13 @@ describe('higher order functions', function () {
       expect(hof.twice).to.be.a('function');
     });
     it('the returned function calls the passed function with the passed argument twice', function () {
-      var double = hof.twice(hof.add);
-      var square = hof.twice(hof.mul);
+      const double = hof.twice(hof.add);
+      const square = hof.twice(hof.mul);
       expect(double(3)).to.equal(6);
       expect(square(3)).to.equal(9);
     });
   });
-  describe('reverse', function () {
+  describe.only('reverse', function () {
     it('is a function', function () {
       expect(hof.reverse).to.be.a('function');
     });
@@ -135,7 +134,7 @@ describe('higher order functions', function () {
       expect(hof.reverse()).to.be.a('function');
     });
     it('the returned function calls the passed function with its arguments reversed', function () {
-      var sub_rev = hof.reverse(hof.sub);
+      const sub_rev = hof.reverse(hof.sub);
       expect(sub_rev(4, 2)).to.equal(-2);
     });
     describe('ADVANCED', function () {
@@ -146,8 +145,8 @@ describe('higher order functions', function () {
     });
   });
   describe('composeu', function () {
-    var double = hof.twice(hof.add);
-    var square = hof.twice(hof.mul);
+    const double = hof.twice(hof.add);
+    const square = hof.twice(hof.mul);
   
     it('is a function', function () {
       expect(hof.composeu).to.be.a('function');
@@ -156,15 +155,15 @@ describe('higher order functions', function () {
       expect(hof.composeu()).to.be.a('function');
     });
     it('the returned function composes the passed unary functions, passing the result of the first function as the argument to the second function', function () {
-      var doubleThenSquare = hof.composeu(double, square);
-      var squareThenDouble = hof.composeu(square, double);
+      const doubleThenSquare = hof.composeu(double, square);
+      const squareThenDouble = hof.composeu(square, double);
       expect(doubleThenSquare(3)).to.equal(square(double(3)));
       expect(squareThenDouble(4)).to.equal(double(square(4)));
     });
     describe('ADVANCED', function () {
       it('works for any number of arguments', function () {
-        var doubleSquareDouble = hof.composeu(double, square, double);
-        var doubleFourTimes = hof.composeu(double, double, double, double);
+        const doubleSquareDouble = hof.composeu(double, square, double);
+        const doubleFourTimes = hof.composeu(double, double, double, double);
         expect(doubleSquareDouble(2)).to.equal(double(square(double(2))));
         expect(doubleFourTimes(3)).to.equal(double(double(double(double(3)))));
       });
@@ -175,7 +174,7 @@ describe('higher order functions', function () {
       expect(hof.composeb).to.be.a('function');
     });
     it('the returned function composes the two passed binary functions, passing the result of the first function as the first argument to the second function', function () {
-      var result = hof.composeb(hof.add, hof.mul)(2, 3, 5);
+      const result = hof.composeb(hof.add, hof.mul)(2, 3, 5);
       expect(result).to.equal(25);
     });
   });
@@ -187,12 +186,12 @@ describe('higher order functions', function () {
       expect(hof.limit()).to.be.a('function');
     });
     it('the returned function does the same as the passed argument', function () {
-      var add_ltd = hof.limit(hof.add, 1);
+      const add_ltd = hof.limit(hof.add, 1);
       expect(add_ltd(2, 3)).to.equal(5);
     });
     it('the returned function can only be called a number of times equal to the 2nd passed argument', function () {
-      var addSpy = sinon.spy(hof.add);
-      var limitedAdd = hof.limit(addSpy, 2);
+      const addSpy = sinon.spy(hof.add);
+      const limitedAdd = hof.limit(addSpy, 2);
       expect(limitedAdd(1, 2)).to.equal(3);
       expect(limitedAdd(2, 3)).to.equal(5);
       expect(limitedAdd(3, 4)).to.be.undefined;
@@ -204,7 +203,7 @@ describe('higher order functions', function () {
       expect(hof.from).to.be.a('function');
     });
     it('emits consecutive integers starting from the passed argument', function () {
-      var generator = hof.from(-2);
+      const generator = hof.from(-2);
       expect(generator()).to.equal(-2);
       expect(generator()).to.equal(-1);
       expect(generator()).to.equal(0);
@@ -216,8 +215,8 @@ describe('higher order functions', function () {
       expect(hof.to).to.be.a('function');
     });
     it('emits consecutive integers from the passed generator up to the value of the second passed argument (not inclusive)', function () {
-      var fromOne = hof.from(1);
-      var upToThree = hof.to(fromOne, 3);
+      const fromOne = hof.from(1);
+      const upToThree = hof.to(fromOne, 3);
       expect(upToThree()).to.equal(1);
       expect(upToThree()).to.equal(2);
       expect(upToThree()).to.equal(undefined);
@@ -228,7 +227,7 @@ describe('higher order functions', function () {
       expect(hof.fromTo).to.be.a('function');
     });
     it('returns a generator that emits consecutive integers between the first argument (inclusive) to the second argument (exclusive)', function () {
-      var fromTwoToFive = hof.fromTo(2, 5);
+      const fromTwoToFive = hof.fromTo(2, 5);
       expect(fromTwoToFive()).to.equal(2);
       expect(fromTwoToFive()).to.equal(3);
       expect(fromTwoToFive()).to.equal(4);
@@ -243,17 +242,17 @@ describe('higher order functions', function () {
       expect(hof.element()).to.be.a('function');
     });
     it('emits the values of the passed array corresponding to the indeces generated by the passed generator', function () {
-      var list = ['a', 'b', 'c', 'd'];
-      var genFromOneToThree = hof.fromTo(1, 3);
-      var genLetters = hof.element(list, genFromOneToThree);
+      const list = ['a', 'b', 'c', 'd'];
+      const genFromOneToThree = hof.fromTo(1, 3);
+      const genLetters = hof.element(list, genFromOneToThree);
       expect(genLetters()).to.equal('b');
       expect(genLetters()).to.equal('c');
       expect(genLetters()).to.equal(undefined);
     });
     it('returns undefined until a valid index is generated', function () {
-      var list = ['a', 'b', 'c', 'd'];
-      var genFromMinusTwoToTwo = hof.fromTo(-2, 2);
-      var genLetters = hof.element(list, genFromMinusTwoToTwo);
+      const list = ['a', 'b', 'c', 'd'];
+      const genFromMinusTwoToTwo = hof.fromTo(-2, 2);
+      const genLetters = hof.element(list, genFromMinusTwoToTwo);
       expect(genLetters()).to.equal(undefined);
       expect(genLetters()).to.equal(undefined);
       expect(genLetters()).to.equal('a');
@@ -262,8 +261,8 @@ describe('higher order functions', function () {
       expect(genLetters()).to.equal(undefined);
     });
     it('if no generator is passed, the returned generator will return all the elements of the array in order', function () {
-      var list = ['a', 'b', 'c'];
-      var genLetters = hof.element(list);
+      const list = ['a', 'b', 'c'];
+      const genLetters = hof.element(list);
       expect(genLetters()).to.equal('a');
       expect(genLetters()).to.equal('b');
       expect(genLetters()).to.equal('c');
@@ -278,15 +277,15 @@ describe('higher order functions', function () {
       expect(hof.collect()).to.be.a('function');
     });
     it('returns a generator that emits the values of the passed generator', function () {
-      var gen = hof.collect(hof.fromTo(0, 3), []);
+      const gen = hof.collect(hof.fromTo(0, 3), []);
       expect(gen()).to.equal(0);
       expect(gen()).to.equal(1);
       expect(gen()).to.equal(2);
       expect(gen()).to.be.undefined;
     });
     it('collects the generated values in the passed array by mutating it', function () {
-      var list = [];
-      var gen = hof.collect(hof.fromTo(0, 3), list);
+      const list = [];
+      const gen = hof.collect(hof.fromTo(0, 3), list);
       expect(list).to.eql([]);
       gen();
       expect(list).to.eql([0]);
@@ -307,7 +306,7 @@ describe('higher order functions', function () {
     });
     it('emits the same values as the generator if passed a predicate that is always true', function () {
       function alwaysTrue () { return true; }
-      var fil = hof.filter(hof.fromTo(0, 3), alwaysTrue);
+      const fil = hof.filter(hof.fromTo(0, 3), alwaysTrue);
       expect(fil()).to.equal(0);
       expect(fil()).to.equal(1);
       expect(fil()).to.equal(2);
@@ -315,14 +314,14 @@ describe('higher order functions', function () {
     });
     it('emits no values if passed a predicate that is always false', function () {
       function alwaysFalse () { return false; }
-      var fil = hof.filter(hof.fromTo(0, 3), alwaysFalse);
+      const fil = hof.filter(hof.fromTo(0, 3), alwaysFalse);
       expect(fil()).to.be.undefined;
       expect(fil()).to.be.undefined;
       expect(fil()).to.be.undefined;
     });
     it('emits only the values that pass the predicate', function () {
-      var onlyEven = function (n) {return n % 2 === 0;};
-      var fil = hof.filter(hof.fromTo(0, 7), onlyEven);
+      const onlyEven = function (n) {return n % 2 === 0;};
+      const fil = hof.filter(hof.fromTo(0, 7), onlyEven);
       expect(fil()).to.equal(0);
       expect(fil()).to.equal(undefined);
       expect(fil()).to.equal(2);
@@ -341,14 +340,14 @@ describe('higher order functions', function () {
       expect(hof.concat()).to.be.a('function');
     });
     it('emits all the values from the passed generator if only one is passed', function () {
-      var gen = hof.concat(hof.fromTo(0, 3));
+      const gen = hof.concat(hof.fromTo(0, 3));
       expect(gen()).to.equal(0);
       expect(gen()).to.equal(1);
       expect(gen()).to.equal(2);
       expect(gen()).to.be.undefined;
     });
     it('emits all the values from the 2nd passed generator after all the values from the 1st one have been emitted', function () {
-      var gen = hof.concat(hof.fromTo(0, 2), hof.fromTo(2, 5));
+      const gen = hof.concat(hof.fromTo(0, 2), hof.fromTo(2, 5));
       expect(gen()).to.equal(0);
       expect(gen()).to.equal(1);
       expect(gen()).to.equal(2);
@@ -358,11 +357,11 @@ describe('higher order functions', function () {
     });
     describe('ADVANCED', function () {
       it('returns undefined if no generators were passed', function () {
-        var gen = hof.concat();
+        const gen = hof.concat();
         expect(gen()).to.be.undefined;
       });
       it('works for more than two arguments', function () {
-        var gen = hof.concat(hof.fromTo(0, 2), hof.fromTo(2, 4), hof.fromTo(4, 6));
+        const gen = hof.concat(hof.fromTo(0, 2), hof.fromTo(2, 4), hof.fromTo(4, 6));
         expect(gen()).to.equal(0);
         expect(gen()).to.equal(1);
         expect(gen()).to.equal(2);
@@ -381,7 +380,7 @@ describe('higher order functions', function () {
       expect(hof.gensymf()).to.be.a('function');
     });
     it('returns a generator that emits unique strings starting with the passed argument', function () {
-      var genNC = hof.gensymf('NC');
+      const genNC = hof.gensymf('NC');
       expect(genNC()).to.equal('NC1');
       expect(genNC()).to.equal('NC2');
       expect(genNC()).to.equal('NC3');
@@ -397,8 +396,8 @@ describe('higher order functions', function () {
       expect(hof.gensymff()).to.be.a('function');
     });
     it('returns a gensymf-type function that emits unique strings starting with the passed argument, with values generated by the unary function, starting from the seed', function () {
-      var gensymf = hof.gensymff(hof.inc, 1);
-      var genNC = gensymf('NC');
+      const gensymf = hof.gensymff(hof.inc, 1);
+      const genNC = gensymf('NC');
       expect(genNC()).to.equal('NC2');
       expect(genNC()).to.equal('NC3');
       expect(genNC()).to.equal('NC4');
@@ -413,7 +412,7 @@ describe('higher order functions', function () {
       expect(hof.fibonaccif()).to.be.a('function');
     });
     it('returns a generator that emits fibonacci numbers starting from the passed arguments', function () {
-      var fib = hof.fibonaccif(2, 3);
+      const fib = hof.fibonaccif(2, 3);
       expect(fib()).to.equal(2);
       expect(fib()).to.equal(3);
       expect(fib()).to.equal(5);
@@ -429,19 +428,19 @@ describe('higher order functions', function () {
       expect(hof.counter()).to.be.an('object');
     });
     it('returns a generator with an up() method that emits and increments the internal hof.counter value', function () {
-      var c = hof.counter(10);
+      const c = hof.counter(10);
       expect(c.up()).to.equal(11);
       expect(c.up()).to.equal(12);
       expect(c.up()).to.equal(13);
     });
     it('returns a generator with a down() method that emits and decrements the internal counter value', function () {
-      var c = hof.counter(20);
+      const c = hof.counter(20);
       expect(c.down()).to.equal(19);
       expect(c.down()).to.equal(18);
       expect(c.down()).to.equal(17);
     });
     it('alternating the up and down methods updates the internal hof.counter value correctly', function () {
-      var c = hof.counter(5);
+      const c = hof.counter(5);
       expect(c.down()).to.equal(4);
       expect(c.up()).to.equal(5);
       expect(c.up()).to.equal(6);
@@ -459,11 +458,11 @@ describe('higher order functions', function () {
       expect(hof.revokable()).to.be.an('object');
     });
     it('returns an object with an "invoke" method that can invoke the passed binary function', function () {
-      var mul_rev = hof.revokable(hof.mul);
+      const mul_rev = hof.revokable(hof.mul);
       expect(mul_rev.invoke(2, 3)).to.equal(6);
     });
     it('returns an object with a "revoke" method that disables the "invoke" method from returning values', function () {
-      var mul_rev = hof.revokable(hof.mul);
+      const mul_rev = hof.revokable(hof.mul);
       expect(mul_rev.invoke(2, 3)).to.equal(6);
       mul_rev.revoke();
       expect(mul_rev.invoke(3, 4)).to.be.undefined;

@@ -1,28 +1,80 @@
 const hof = {};
 
-hof.identity = function () {};
+hof.identity = function (x) {
+  return x;
+};
 
-hof.identityf = function () {};
+hof.identityf = function (x) {
+  return function() {
+    return x;
+  };
+};
 
-hof.add = function () {};
+hof.add = function (a,b) {
+  return a + b;
+};
 
-hof.sub = function () {};
+hof.sub = function (a,b) {
+  return a - b;
+};
 
-hof.mul = function () {};
+hof.mul = function (a,b) {
+  return a*b;
+};
 
-hof.addf = function () {};
+hof.addf = function (a) {
+  return function(b) {
+    return a + b;
+  };
+};
 
-hof.liftf = function () {};
+hof.liftf = function (bin) {
+  return function (a) {
+    return function(b) {
+      return bin(a,b);
+    };
+  };
+};
 
-hof.curry = function () {};
+hof.curry = function (bin,a) {
+  return function(b) {
+    return bin(b,a);
+  };
+};
 
-hof.inc = function () {};
+// hof.inc = function (val) {
+//   return val+1;
+// };
 
-hof.twice = function () {};
+hof.inc = function (val) {
+  return hof.add(val,1);
+};
 
-hof.reverse = function () {};
+hof.twice = function (bin) {
+  return function (a) {
+    return bin(a,a);
+  };
+};
 
-hof.composeu = function () {};
+hof.reverse = function (func) {
+  
+  return function () {
+    const args = [...arguments];
+    const newArgs = args.reverse();
+    return func(...newArgs);
+  };
+};
+
+hof.composeu = function () {
+
+  const args = [...arguments];
+  return function(val) {
+    return args.reduce((acc,func,i) => {
+      i === 0 ? acc = func(val) : acc = func(acc);
+      return acc;
+    },0);
+  };
+};
 
 hof.composeb = function () {};
 
@@ -52,4 +104,4 @@ hof.counter = function () {};
 
 hof.revokable = function () {};
 
-module.exports = {hof,};
+module.exports = hof;
