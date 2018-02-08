@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const hof = require('../index');
 
 describe('higher order functions', function () {
-  describe('identity', function () {
+  describe.only('identity', function () {
     it('is a function', function () {
       expect(hof.identity).to.be.a('function');
     });
@@ -126,7 +126,7 @@ describe('higher order functions', function () {
       expect(square(3)).to.equal(9);
     });
   });
-  describe.only('reverse', function () {
+  describe('reverse', function () {
     it('is a function', function () {
       expect(hof.reverse).to.be.a('function');
     });
