@@ -226,7 +226,7 @@ and a `revoke` function that disables the `invoke` function.
 ```javascript
 const add = revokable(add);
 add.invoke(3, 4) // 7
-rev.revoke();
+add.revoke();
 add.invoke(5, 7) // undefined
 ```
  
