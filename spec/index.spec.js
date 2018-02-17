@@ -1,9 +1,8 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
-
 const hof = require('../index');
 
-describe('Higher Order Functions', function() {
+describe('Higher Order Functions', () => {
   describe('Identity Functions', () => {
     describe('identity', () => {
       it('returns the first value passed as an argument', () => {
@@ -270,8 +269,12 @@ describe('Higher Order Functions', function() {
         const con = hof.concat(hof.fromTo(0, 3), hof.fromTo(0, 2));
         expect(con).to.be.a('function');
       });
-      it('returns outputs of both given functions', () => {
-        const ducks = ['Scrooge McDuck', 'The Ugly Duckling', 'The Howard the Duck'];
+      it('returns outputs of both given generators', () => {
+        const ducks = [
+          'Scrooge McDuck',
+          'The Ugly Duckling',
+          'The Howard the Duck'
+        ];
         const ele = hof.element(ducks);
         const con = hof.concat(hof.fromTo(0, 2), ele);
         expect(con()).to.be.equal(0);
@@ -282,6 +285,8 @@ describe('Higher Order Functions', function() {
         expect(con()).to.be.undefined;
       });
     });
+  });
+  describe('gensym Functions', () => {
     describe('gensymf', () => {
       it('returns a function on first invocation', () => {
         expect(hof.gensymf('A')).to.be.a('function');
@@ -292,17 +297,89 @@ describe('Higher Order Functions', function() {
         expect(gensym()).to.equal('A1');
       });
       it('counters will be seperate for each designated symbol', () => {
-        const gensymA = hof.gensymf('A');
-        const gensymB = hof.gensymf('B');
-        expect(gensymA()).to.equal('A0');
-        expect(gensymB()).to.equal('B0');
-        expect(gensymB()).to.equal('B1');
-        expect(gensymA()).to.equal('A1');
-        expect(gensymB()).to.equal('B2');
-        expect(gensymB()).to.equal('B3');
-        expect(gensymA()).to.equal('A2');
+        const genA = hof.gensymf('A');
+        const genB = hof.gensymf('B');
+        expect(genA()).to.equal('A0');
+        expect(genB()).to.equal('B0');
+        expect(genB()).to.equal('B1');
+        expect(genA()).to.equal('A1');
+        expect(genB()).to.equal('B2');
+        expect(genB()).to.equal('B3');
+        expect(genA()).to.equal('A2');
       });
-      
+    });
+    describe('gensymff', () => {
+      it('returns a function', () => {
+        const gensymf = hof.gensymff(hof.inc, 0);
+        expect(gensymf).to.be.a('function');
+      });
+      xit('giving inc() and a seed will mimic gensymf behaviours ', () => {
+        const gensymf = hof.gensymff(hof.inc, -1);
+        const genA = gensymf('A');
+        const genB = gensymf('B');
+        expect(genA()).to.equal('A0');
+        expect(genB()).to.equal('B0');
+        expect(genB()).to.equal('B1');
+        expect(genA()).to.equal('A1');
+        expect(genB()).to.equal('B2');
+        expect(genB()).to.equal('B3');
+        expect(genA()).to.equal('A2');
+      });
+    });
+  });
+  describe('Object Methods', () => {
+    describe('counter', () => {
+      it('returns an object', () => {
+        const obj = hof.counter(10);
+        expect(obj).to.be.a('object');
+      });
+      it('returned object has an up method', () => {
+        const obj = hof.counter(10);
+        expect(obj).to.have.property('up').and.be.a('function');
+      });
+      it('up method will return an incrememented count', () => {
+        const obj = hof.counter(10);
+        expect(obj.up()).to.equal(11);
+      });
+      it('returned object has an down method', () => {
+        const obj = hof.counter(10);
+        expect(obj).to.have.property('down').and.be.a('function');
+      });
+      it('down method will return an decreased count', () => {
+        const obj = hof.counter(10);
+        expect(obj.down()).to.equal(9);
+      });
+      it('state will be shared by methods within object', () => {
+        const obj = hof.counter(10);
+        expect(obj.up()).to.equal(11);
+        expect(obj.down()).to.equal(10);
+        expect(obj.down()).to.equal(9);
+      });
+    });
+    describe('revoke', () => {
+      it('returns an object', () => {
+        const obj = hof.revokable(hof.add);
+        expect(obj).to.be.a('object');
+      });
+      it('returned object has an invoke method', () => {
+        const obj = hof.revokable(hof.add);
+        expect(obj).to.have.property('invoke').and.be.a('function');
+      });
+      it('returned object has an revoke method', () => {
+        const obj = hof.revokable(hof.add);
+        expect(obj).to.have.property('revoke').and.be.a('function');
+      });
+      it('invoke will allow use of passed function', () => {
+        const add = hof.revokable(hof.add);
+        expect(add.invoke).to.be.a('function');
+        expect(add.invoke(3,4)).to.equal(hof.add(3,4));
+      });
+      it('after revoke is called, passed function will return undefined', () => {
+        const add = hof.revokable(hof.add);
+        expect(add.invoke(3,4)).to.equal(hof.add(3,4));
+        add.revoke();
+        expect(add.invoke(3,4)).to.be.undefined;
+      });
     });
   });
 });

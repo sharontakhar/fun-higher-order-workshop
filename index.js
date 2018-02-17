@@ -1,55 +1,74 @@
 const hof = {};
 
-hof.identity = function () {};
+hof.identity = x => x;
 
-hof.identityf = function () {};
+hof.identityf = x => () => x;
 
-hof.add = function () {};
+hof.add = (a, b) => a + b;
 
-hof.sub = function () {};
+hof.sub = (x, y) => x - y;
 
-hof.mul = function () {};
+hof.mul = (x, y) => x * y;
 
-hof.addf = function () {};
+hof.addf = x => y => x + y;
 
-hof.liftf = function () {};
+hof.liftf = func => x => y => func(x, y);
 
-hof.curry = function () {};
+hof.curry = (operation, ...initialArgs) => (...remainingArgs) =>
+  operation(...initialArgs, ...remainingArgs);
 
-hof.inc = function () {};
+hof.inc = x => ++x;
 
-hof.twice = function () {};
+hof.twice = func => x => func(x, x);
 
-hof.reverse = function () {};
+hof.reverse = func => (x, y) => func(y, x);
 
-hof.composeu = function () {};
+hof.composeu = (func1, func2) => x => func2(func1(x));
 
-hof.composeb = function () {};
+hof.composeb = (func1, func2) => (x, y, z) => func2(func1(x, y), z);
 
-hof.limit = function () {};
+hof.limit = (func, limit) => {
+  let callCount = 0;
+  return (x, y) => (callCount++ < limit ? func(x, y) : undefined);
+};
 
-hof.from = function () {};
+hof.from = x => () => x++;
 
-hof.to = function () {};
+hof.to = (gen, x) => hof.limit(gen, x);
 
-hof.fromTo = function () {};
+hof.fromTo = (x, y) => hof.to(hof.from(x), y);
 
-hof.element = function () {};
+hof.element = (arr, gen = hof.from(0)) => () => arr[gen()];
 
-hof.collect = function () {};
+hof.collect = (gen, arr) => [...arr, gen()];
 
-hof.filter = function () {};
+hof.filter = (gen, predicate) => predicate(gen());
 
-hof.concat = function () {};
+hof.concat = (gen1, gen2) => () => {
+  const x = gen1();
+  return x !== undefined ? x : gen2();
+};
 
-hof.gensymf = function () {};
+hof.gensymf = char => {
+  let x = 0;
+  return () => `${char}${x++}`;
+};
 
-hof.gensymff = function () {};
+hof.gensymff = (gen, seed) => char => {
+  const value = gen(seed);
 
-hof.fibonaccif = function () {};
+  return () => `${char}${gen(value)}`;
+};
 
-hof.counter = function () {};
+hof.fibonaccif = function() {};
 
-hof.revokable = function () {};
+hof.counter = x => ({ x, up: () => ++x, down: () => --x });
+
+hof.revokable = func => ({
+  invoke: func,
+  revoke () {
+    this.invoke = () => undefined;
+  }
+});
 
 module.exports = hof;
