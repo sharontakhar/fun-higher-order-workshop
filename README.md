@@ -224,11 +224,10 @@ up() // 10
 an object containing an `invoke` function that can invoke the binary function,
 and a `revoke` function that disables the `invoke` function.
 ```javascript
-const rev = revokable(add);
-const add_rev = rev.invoke;
-add_rev(3, 4) // 7
+const add = revokable(add);
+add.invoke(3, 4) // 7
 rev.revoke();
-add_rev(5, 7) // undefined
+add.invoke(5, 7) // undefined
 ```
  
 ## More difficult tasks
