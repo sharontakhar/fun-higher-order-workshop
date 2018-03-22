@@ -74,34 +74,28 @@ const square = twice(mul);
 square(11) // 121
 ```
 
-9. Write `reverse`, a function that reverses the arguments of a binary function.
-``` javascript
-const bus = reverse(sub);
-bus(3, 2) // -1
-```
-
-10. Write a function `composeu` that takes two unary functions and returns
+9. Write a function `composeu` that takes two unary functions and returns
 a unary function that calls them both.
 ``` javascript
 composeu(double, square)(5) // 100
 composeu(square, double)(5) // 50
 ```
 
-11. Write a function `composeb` that takes two binary functions and returns
+10. Write a function `composeb` that takes two binary functions and returns
 a function that calls them both. The return value of the first function will get passed as the first argument to the second one.
 ``` javascript
 mul(add(2, 3), 7) // 35
 composeb(add, mul)(2, 3, 7) // 35
 ```
 
-12. Write a `limit` function that allows a binary function to be called a limited
+11. Write a `limit` function that allows a binary function to be called a limited
 number of times.
 ``` javascript
 const add_ltd = limit(add, 1);
 add_ltd(3, 4) // 7
 add_ltd(3, 5) // undefined
 ```
-13. Write a `from` function that produces a generator that will produce a 
+12. Write a `from` function that produces a generator that will produce a 
 series of consecutive numerical values starting from the argument passed.
 ``` javascript
 const index = from(0);
@@ -109,7 +103,7 @@ index() // 0
 index() // 1
 index() // 2
 ```
-14. Write a `to` function that takes a generator and an end value,
+13. Write a `to` function that takes a generator and an end value,
 and returns a generator that will produce numbers up to that limit (not inclusive).
 ``` javascript
 const index = to(from(1), 3);
@@ -117,7 +111,7 @@ index() // 1
 index() // 2
 index() // undefined
 ```
-15. Write a `fromTo` function that produces a generator that will produce
+14. Write a `fromTo` function that produces a generator that will produce
 values in a range.
 ``` javascript
 const index = fromTo(0, 3);
@@ -126,7 +120,7 @@ index() // 1
 index() // 2
 index() // undefined
 ```
-16. Write an `element` function that takes an array and a generator and
+15. Write an `element` function that takes an array and a generator and
 returns a generator that will produce elements from the array.
 ``` javascript
 const ele = element(['a', 'b', 'c', 'd'], fromTo(1, 3));
@@ -134,7 +128,7 @@ ele() // 'b'
 ele() // 'c'
 ele() // undefined
 ```
-17. Modify the `element` function so that the generator argument is optional.
+16. Modify the `element` function so that the generator argument is optional.
 If a generator in not provided, then each of the elements of the array will
 be produced.
 ```javascript
@@ -145,7 +139,7 @@ ele() // 'c'
 ele() // 'd'
 ele() // undefined
 ```
-18. Write a `collect` function that takes a generator and an array and produces
+17. Write a `collect` function that takes a generator and an array and produces
 a function that will collect the results in the array by mutating it.
 ``` javascript
 const array = [];
@@ -155,7 +149,7 @@ col() // 1
 col() // undefined
 array // [0, 1]
 ```
-19. Write a `filter` function that takes a generator and a predicate and 
+18. Write a `filter` function that takes a generator and a predicate and 
 produces a generator that produces only the values approved by the predicate.
 ``` javascript
 function third (value) {
@@ -166,7 +160,7 @@ fil() // 0
 fil() // 3
 fil() // undefined
 ```
-20. Write a `concat` function that takes two generators and produces a generator
+19. Write a `concat` function that takes two generators and produces a generator
 that combines the sequences.
 ``` javascript
 const con = concat(fromTo(0, 3), fromTo(0, 2));
@@ -177,7 +171,7 @@ con() // 0
 con() // 1
 con() // undefined
 ```
-21. Make a function `gensymf` that makes a function that generates
+20. Make a function `gensymf` that makes a function that generates
 unique symbols.
 ``` javascript
 const genG = gensymf("G");
@@ -187,7 +181,7 @@ genH() // "H1"
 genG() // "G2"
 genH() // "H2"
 ```
-22. Write a function `gensymff` that takes a unary function and a seed
+21. Write a function `gensymff` that takes a unary function and a seed
 and returns a `gensymf`
 ``` javascript
 const gensymf = gensymff(inc, 0);

@@ -20,8 +20,6 @@ hof.inc = function () {};
 
 hof.twice = function () {};
 
-hof.reverse = function () {};
-
 hof.composeu = function () {};
 
 hof.composeb = function () {};
