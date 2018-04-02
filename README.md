@@ -333,8 +333,7 @@ curry(multiply5, 1, 2, 3)(4, 5) // 120
 
 ```
 2. Wow, that was ugly. Research ES6 spread syntax. Can you make it a lot more elegant?
-3. Write `reverse` using ES6 spread syntax and a very handy array method (find it on MDN) such that it can take any number of arguments.
-4. Write `composeu` such that it can take any number of unary functions
+3. Write `composeu` such that it can take any number of unary functions
 
 ## A much more difficult task
 1. Reimplement the `concat` function so that it will take any number of generators
