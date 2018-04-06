@@ -108,15 +108,6 @@ describe('Higher Order Functions', () => {
         expect(double(3)).to.equal(hof.add(3, 3));
       });
     });
-    describe('reverse', function() {
-      it('returns a function', function() {
-        expect(hof.reverse()).to.be.a('function');
-      });
-      it('the returned function calls the passed function with its arguments reversed', () => {
-        const sub_rev = hof.reverse(hof.sub);
-        expect(sub_rev(4, 2)).to.equal(-2);
-      });
-    });
     describe('composeu', () => {
       it('returns a function on first invocation', () => {
         const add100 = x => x + 100;
