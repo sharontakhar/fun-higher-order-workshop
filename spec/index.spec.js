@@ -118,12 +118,10 @@ describe('Higher Order Functions', () => {
       it('returns a value of given function on second invocation', () => {
         const square = x => x * x;
         const double = x => x + x;
-
-        const squareThenDouble = hof.composeu(double, square);
-        const doubleThenSquare = hof.composeu(square, double);
-
-        expect(squareThenDouble(5)).to.equal(100);
-        expect(doubleThenSquare(5)).to.equal(50);
+        const squareThenDouble = hof.composeu(square, double);
+        const doubleThenSquare = hof.composeu(double, square);
+        expect(squareThenDouble(5)).to.equal(50);
+        expect(doubleThenSquare(5)).to.equal(100);
       });
     });
     describe('composeb', () => {
