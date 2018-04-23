@@ -452,12 +452,6 @@ describe('Advanced Functionality', () => {
       expect(hof.curry(multiply5Numbers, 1, 2, 3)(4, 5)).to.equal(120);
     });
   });
-  describe('reverse', () => {
-    it('works for any number of arguments', () => {
-      const sub3 = (a, b, c) => a - b - c;
-      expect(hof.reverse(sub3)(1, 2, 3)).to.equal(sub3(3, 2, 1));
-    });
-  });
   describe('composeu', () => {
     it('works for any number of arguments', () => {
       const square = x => x * x;
