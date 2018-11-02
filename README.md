@@ -32,7 +32,17 @@ mul(3, 4) // 12
 
 ```
 
-4. Write a function `addf` that adds from two invocations.
+4. Write a function called `inc` that uses one of your previous functions to return a number incremented by 1.
+
+```js
+
+const inc = ___; // <-- function definition
+inc(5) // 6
+inc(inc(5)) // 7
+
+```
+
+5. Write a function `addf` that adds from two invocations.
 
 ```js
 
@@ -42,7 +52,27 @@ console.log(result) // 7
 
 ```
 
-5. Write a function `liftf` that takes a binary function, and
+
+6. Write a function `curry` that takes a binary function and an
+argument, and returns a function that can take a second argument.
+
+```js
+
+const add3 = curry(add, 3)
+add3(4) // 7
+
+```
+
+```js
+
+const mul5 = curry(mul, 5)
+const result = mul5(6)
+console.log(result) // 30
+
+```
+
+
+7. Write a function `liftf` that takes a binary function, and
 makes it callable with two invocations.
 
 ```js
@@ -65,35 +95,7 @@ console.log(result) // 30
 
 ```
 
-6. Write a function `curry` that takes a binary function and an
-argument, and returns a function that can take a second argument.
-**Bonus points** if you can also implement it using `liftf`.
 
-```js
-
-const add3 = curry(add, 3)
-add3(4) // 7
-
-```
-
-```js
-
-const mul5 = curry(mul, 5)
-const result = mul5(6)
-console.log(result) // 30
-
-```
-
-7. Without writing any new functions, show 3 ways to create the `inc`
-function (name all 3 functions `inc` and comment out the implementations you are not using).
-
-```js
-
-const inc = ___; // <-- function definition
-inc(5) // 6
-inc(inc(5)) // 7
-
-```
 
 8. Write a function `twice` that takes a binary function and returns
 a unary function that passes its argument to the binary function twice.
@@ -115,7 +117,7 @@ console.log(result) // 121
 ```
 
 9. Write a function `composeu` that takes two unary functions and returns
-a unary function that calls them both.
+a unary function that calls them both, in argument order.
 
 ```js
 
