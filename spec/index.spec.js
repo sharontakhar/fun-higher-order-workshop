@@ -51,8 +51,14 @@ describe('Higher Order Functions', () => {
       });
     });
   });
-  
+
   describe('Functions with multiple invocations', () => {
+    describe('inc', () => {
+      it('increments the passed argument by 1', () => {
+        expect(hof.inc(0)).to.equal(1);
+        expect(hof.inc(-3)).to.equal(-2);
+      });
+    });
     describe('addf', () => {
       it('returns a function on first invocation', () => {
         expect(hof.addf(3)).to.be.a('function');
@@ -67,6 +73,15 @@ describe('Higher Order Functions', () => {
         expect(add100(-100)).to.be.equal(0);
       });
     });
+    describe('curry', () => {
+      it('will take a binary function and a single value as arguments and return a function', () => {
+        expect(hof.curry(hof.add, 5)).to.be.a('function');
+      });
+      it('second invocation will return the result', () => {
+        const timesByThirty = hof.curry(hof.mul, 30);
+        expect(timesByThirty(6)).to.equal(hof.mul(30, 6));
+      });
+    });
     describe('liftf', () => {
       it('returns a function on first invocation', () => {
         expect(hof.liftf(hof.add)).to.be.a('function');
@@ -77,22 +92,6 @@ describe('Higher Order Functions', () => {
       it('returns the result on third invocation (so that the binary function is callable with two invocations)', () => {
         expect(hof.liftf(hof.add)(1)(6)).to.be.equal(hof.add(1, 6));
         expect(hof.liftf(hof.mul)(5)(6)).to.be.equal(hof.mul(5, 6));
-      });
-    });
-
-    describe('curry', () => {
-      it('will take a binary function and a single value as arguments and return a function', () => {
-        expect(hof.curry(hof.add, 5)).to.be.a('function');
-      });
-      it('second invocation will return the result', () => {
-        const timesByThirty = hof.curry(hof.mul, 30);
-        expect(timesByThirty(6)).to.equal(hof.mul(30, 6));
-      });
-    });
-    describe('inc', () => {
-      it('increments the passed argument by 1', () => {
-        expect(hof.inc(0)).to.equal(1);
-        expect(hof.inc(-3)).to.equal(-2);
       });
     });
   });
@@ -459,9 +458,7 @@ describe('Advanced Functionality', () => {
       const doubleSquareDouble = hof.composeu(double, square, double);
       const doubleFourTimes = hof.composeu(double, double, double, double);
       expect(doubleSquareDouble(2)).to.equal(double(square(double(2))));
-      expect(doubleFourTimes(3)).to.equal(
-        double(double(double(double(3))))
-      );
+      expect(doubleFourTimes(3)).to.equal(double(double(double(double(3)))));
     });
   });
 
