@@ -10,13 +10,13 @@ hof.sub = function() {};
 
 hof.mul = function() {};
 
-hof.addf = function() {};
+hof.inc = function() {};
 
-hof.liftf = function() {};
+hof.addf = function() {};
 
 hof.curry = function() {};
 
-hof.inc = function() {};
+hof.liftf = function() {};
 
 hof.twice = function() {};
 
