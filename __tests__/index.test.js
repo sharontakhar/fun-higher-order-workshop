@@ -327,6 +327,34 @@ describe('Higher Order Functions', () => {
         expect(gen()).toBe(undefined);
       });
     });
+    describe('fibonaccif', () => {
+      it('returns a function', () => {
+        const fib = hof.fibonaccif(0, 1);
+        expect(typeof fib).toBe('function');
+      });
+      it('returns given value on first invocation', () => {
+        const fib = hof.fibonaccif(0, 1);
+        expect(fib()).toBe(0);
+      });
+      it('returns fibonacci numbers on subsequent invocations', () => {
+        const fib = hof.fibonaccif(0, 1);
+        expect(fib()).toBe(0);
+        expect(fib()).toBe(1);
+        expect(fib()).toBe(1);
+        expect(fib()).toBe(2);
+        expect(fib()).toBe(3);
+        expect(fib()).toBe(5);
+      });
+      it('works for different starting values', () => {
+        const lucas = hof.fibonaccif(2, 1);
+        expect(lucas()).toBe(2);
+        expect(lucas()).toBe(1);
+        expect(lucas()).toBe(3);
+        expect(lucas()).toBe(4);
+        expect(lucas()).toBe(7);
+        expect(lucas()).toBe(11);
+      });
+    });
   });
 
   describe('gensym Functions', () => {
