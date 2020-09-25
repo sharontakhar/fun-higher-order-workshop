@@ -40,6 +40,8 @@ hof.filter = function() {};
 
 hof.concat = function() {};
 
+hof.fibonaccif = function() {};
+
 hof.gensymf = function() {};
 
 hof.gensymff = function() {};

@@ -8,17 +8,10 @@
   },
   "author": "Mauro Gestoso <mauro@northcoders.com>",
   "license": "MIT",
-  "dependencies": {},
   "scripts": {
-    "test": "mocha --bail spec/*.spec.js",
-    "lint": "eslint ./",
-    "posttest": "npm run lint"
+    "test": "jest"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^4.5.0",
-    "husky": "^0.14.3",
-    "mocha": "^3.5.0",
-    "sinon": "^1.17.7"
+    "jest": "^26.4.2"
   }
 }
