@@ -247,8 +247,6 @@ genH(); // "H2"
 const gensymf = gensymff(inc, 0);
 const genG = gensymf('G');
 const genH = gensymf('H');
-genG(); // "G0"
-genH(); // "H0"
 genG(); // "G1"
 genH(); // "H1"
 genG(); // "G2"
