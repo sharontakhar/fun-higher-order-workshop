@@ -194,6 +194,8 @@ function third(value) {
 }
 const fil = filter(fromTo(0, 5), third);
 fil(); // 0
+fil(): // undefined
+fil(): // undefined
 fil(); // 3
 fil(); // undefined
 ```
@@ -229,7 +231,9 @@ fib(); // 5
 
 ```js
 const genG = gensymf('G');
-const genH = gensymh('H');
+const genH = gensymf('H');
+genG(); // "G0"
+genH(); // "H0"
 genG(); // "G1"
 genH(); // "H1"
 genG(); // "G2"
