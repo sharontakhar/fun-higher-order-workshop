@@ -8,19 +8,16 @@
 
 ## Tasks
 
-1. Write an _identity_ function that takes an argument
-   and returns that same argument.
+1. Write an _identity_ function that takes an argument and returns that same argument.
 
-2. Write a function `identityf` that takes an argument and
-   returns a function that returns that argument.
+2. Write a function `identityf` that takes an argument and returns a function that returns that argument.
 
 ```js
 const three = identityf(3);
 three(); // 3
 ```
 
-3. Write three binary functions, `add`, `sub` and `mul` that
-   take two numbers and return their sum, difference and product respectively.
+3. Write three binary functions (_functions that take two arguments_), `add`, `sub` and `mul` that take two numbers and return their sum, difference and product respectively.
 
 ```js
 add(3, 4); // 7
@@ -44,8 +41,7 @@ const result = add3(4);
 console.log(result); // 7
 ```
 
-6. Write a function `curry` that takes a binary function and an
-   argument, and returns a function that can take a second argument.
+6. Write a function `curry` that takes a binary function and an argument, and returns a function that can take a second argument.
 
 ```js
 const add3 = curry(add, 3);
@@ -58,8 +54,7 @@ const result = mul5(6);
 console.log(result); // 30
 ```
 
-7. Write a function `liftf` that takes a binary function, and
-   makes it callable with two invocations.
+7. Write a function `liftf` that takes a binary function, and makes it callable with two invocations.
 
 ```js
 const add = (a, b) => a + b;
@@ -77,8 +72,7 @@ const result = mul5(6);
 console.log(result); // 30
 ```
 
-8. Write a function `twice` that takes a binary function and returns
-   a unary function that passes its argument to the binary function twice.
+8. Write a function `twice` that takes a binary function and returns a unary function (_a function that takes one argument_) that passes its argument to the binary function twice.
 
 ```js
 const doubl = twice(add);
@@ -92,8 +86,7 @@ const result = square(11);
 console.log(result); // 121
 ```
 
-9. Write a function `composeu` that takes two unary functions and returns
-   a unary function that calls them both, in argument order.
+9. Write a function `composeu` that takes two unary functions and returns a unary function that calls them both, in argument order.
 
 ```js
 const double = (a) => a * 2;
@@ -102,16 +95,14 @@ composeu(double, square)(5); // 100
 composeu(square, double)(5); // 50
 ```
 
-10. Write a function `composeb` that takes two binary functions and returns
-    a function that calls them both. The return value of the first function will get passed as the first argument to the second one.
+10. Write a function `composeb` that takes two binary functions and returns a function that calls them both. The return value of the first function will get passed as the first argument to the second one.
 
 ```js
 mul(add(2, 3), 7); // 35
 composeb(add, mul)(2, 3, 7); // 35
 ```
 
-11. Write a `limit` function that allows a binary function to be called a limited
-    number of times.
+11. Write a `limit` function that allows a binary function to be called a limited number of times.
 
 ```js
 const add_ltd = limit(add, 1);
@@ -119,8 +110,7 @@ add_ltd(3, 4); // 7
 add_ltd(3, 5); // undefined
 ```
 
-12. Write a `from` function that produces a generator that will produce a
-    series of consecutive numerical values starting from the argument passed.
+12. Write a `from` function that produces a generator that will produce a series of consecutive numerical values starting from the argument passed.
 
 ```js
 const index = from(0);
@@ -129,8 +119,7 @@ index(); // 1
 index(); // 2
 ```
 
-13. Write a `to` function that takes a generator and an end value,
-    and returns a generator that will produce numbers up to that limit (not inclusive).
+13. Write a `to` function that takes a generator and an end value, and returns a generator that will produce numbers up to that limit (not inclusive).
 
 ```js
 const index = to(from(1), 3);
@@ -139,8 +128,7 @@ index(); // 2
 index(); // undefined
 ```
 
-14. Write a `fromTo` function that produces a generator that will produce
-    values in a range.
+14. Write a `fromTo` function that produces a generator that will produce values in a range.
 
 ```js
 const index = fromTo(0, 3);
@@ -150,8 +138,7 @@ index(); // 2
 index(); // undefined
 ```
 
-15. Write an `element` function that takes an array and a generator and
-    returns a generator that will produce elements from the array.
+15. Write an `element` function that takes an array and a generator and returns a generator that will produce elements from the array.
 
 ```js
 const ele = element(['a', 'b', 'c', 'd'], fromTo(1, 3));
@@ -160,9 +147,7 @@ ele(); // 'c'
 ele(); // undefined
 ```
 
-16. Modify the `element` function so that the generator argument is optional.
-    If a generator in not provided, then each of the elements of the array will
-    be produced.
+16. Modify the `element` function so that the generator argument is optional. If a generator in not provided, then each of the elements of the array will be produced.
 
 ```js
 const ele = element(['a', 'b', 'c', 'd']);
@@ -173,8 +158,7 @@ ele(); // 'd'
 ele(); // undefined
 ```
 
-17. Write a `collect` function that takes a generator and an array and produces
-    a function that will collect the results in the array by mutating it.
+17. Write a `collect` function that takes a generator and an array and produces a function that will collect the results in the array by mutating it.
 
 ```js
 const array = [];
@@ -185,8 +169,7 @@ col(); // undefined
 array; // [0, 1]
 ```
 
-18. Write a `filter` function that takes a generator and a predicate and
-    produces a generator that produces only the values approved by the predicate.
+18. Write a `filter` function that takes a generator and a predicate and produces a generator that produces only the values approved by the predicate.
 
 ```js
 function third(value) {
@@ -200,8 +183,7 @@ fil(); // 3
 fil(); // undefined
 ```
 
-19. Write a `concat` function that takes two generators and produces a generator
-    that combines the sequences.
+19. Write a `concat` function that takes two generators and produces a generator that combines the sequences.
 
 ```js
 const con = concat(fromTo(0, 3), fromTo(0, 2));
@@ -213,8 +195,7 @@ con(); // 1
 con(); // undefined
 ```
 
-20. Make a function `fibonaccif` that returns a generator that will return
-    consecutive fibonacci numbers starting with the first two arguments.
+20. Make a function `fibonaccif` that returns a generator that will return consecutive fibonacci numbers starting with the first two arguments.
 
 ```js
 const fib = fibonaccif(0, 1);
@@ -226,8 +207,7 @@ fib(); // 3
 fib(); // 5
 ```
 
-21. Make a function `gensymf` that makes a function that generates
-    unique symbols.
+21. Make a function `gensymf` that makes a function that generates unique symbols.
 
 ```js
 const genG = gensymf('G');
@@ -240,8 +220,7 @@ genG(); // "G2"
 genH(); // "H2"
 ```
 
-22. Write a function `gensymff` that takes a unary function and a seed
-    and returns a `gensymf`
+22. Write a function `gensymff` that takes a unary function and a seed and returns a `gensymf`
 
 ```js
 const gensymf = gensymff(inc, 0);
@@ -253,8 +232,7 @@ genG(); // "G2"
 genH(); // "H2"
 ```
 
-23. Write a `counter` function that returns an object containing two functions
-    that implement an up/down counter, hiding the counter value itself.
+23. Write a `counter` function that returns an object containing two functions that implement an up/down counter, hiding the counter value itself.
 
 ```js
 const object = counter(10);
@@ -266,9 +244,7 @@ down(); // 9
 up(); // 10
 ```
 
-24. Write a `revokable` function that takes a binary function, and returns
-    an object containing an `invoke` function that can invoke the binary function,
-    and a `revoke` function that disables the `invoke` function.
+24. Write a `revokable` function that takes a binary function, and returns an object containing an `invoke` function that can invoke the binary function, and a `revoke` function that disables the `invoke` function.
 
 ```js
 const add = revokable(add);
