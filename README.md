@@ -33,12 +33,15 @@ inc(5); // 6
 inc(inc(5)); // 7
 ```
 
-5. Write a function `addf` that adds from two invocations.
+5. Write a function `addf` that adds from two invocations).
 
 ```js
 const add3 = addf(3);
 const result = add3(4);
 console.log(result); // 7
+
+const result2 = addf(5)(6);
+console.log(result2); // 11
 ```
 
 6. Write a function `curry` that takes a binary function and an argument, and returns a function that can take a second argument.
