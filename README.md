@@ -44,7 +44,7 @@ const result2 = addf(5)(6);
 console.log(result2); // 11
 ```
 
-6. Write a function `curry` that takes a binary function and an argument, and returns a function that can take a second argument.
+6. Write a function `curry` that takes two arguments, a binary function and second argument, and returns a function that can take an argument to pass to the binary function.
 
 ```js
 const add3 = curry(add, 3);
