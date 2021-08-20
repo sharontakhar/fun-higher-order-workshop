@@ -200,6 +200,13 @@ describe('Higher Order Functions', () => {
         expect(index()).toBe(undefined);
         expect(index()).toBe(undefined);
       });
+      it('exclusively emits undefined when surpassed limit (not inclusive) when generator does not start at 0', () => {
+        const index = hof.to(hof.from(1), 3);
+        expect(index()).toBe(1);
+        expect(index()).toBe(2);
+        expect(index()).toBe(undefined);
+        expect(index()).toBe(undefined);
+      });
     });
     describe('fromTo', () => {
       it('returns a function on first invocation', () => {
