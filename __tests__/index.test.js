@@ -94,6 +94,12 @@ describe('Higher Order Functions', () => {
     });
   });
 
+//  describe('once', () => {
+//    it('Add your first test here...', () => {
+//      // Write your own tests for once
+//    })
+//  })
+
   describe('Unary Functions', () => {
     describe('twice', () => {
       it('returns a function on first invocation', () => {
