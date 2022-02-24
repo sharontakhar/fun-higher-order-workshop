@@ -91,7 +91,7 @@ console.log(result); // 121
 
 ## Special Task
 
-**You will need to write your own tests for this one, and Jest Mocks will come in handy!**
+**You will need to write your own tests for this one!**
 
 9. Write a function `once` that works in the same way as the [lodash version](https://lodash.com/docs/4.17.15#once). **nb** You can ignore the this bindings mentioned in the docs. We'll cover this later in the course.
 
