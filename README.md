@@ -10,37 +10,37 @@
 
 1. Write an _identity_ function that takes an argument and returns that same argument.
 
-2. Write a function `identityf` that takes an argument and returns a function that returns that argument.
+2. Write a function `identityF` that takes an argument and returns a function that returns that argument.
 
 ```js
-const three = identityf(3);
+const three = identityF(3);
 three(); // 3
 ```
 
-3. Write three binary functions (_functions that take two arguments_), `add`, `sub` and `mul` that take two numbers and return their sum, difference and product respectively.
+3. Write three binary functions (_functions that take two arguments_), `add`, `subtract` and `multiply` that take two numbers and return their sum, difference and product respectively.
 
 ```js
 add(3, 4); // 7
-sub(3, 4); // -1
-mul(3, 4); // 12
+subtract(3, 4); // -1
+multiply(3, 4); // 12
 ```
 
-4. Write a function called `inc` that uses one of your previous functions to return a number incremented by 1.
+4. Write a function called `increment` that uses one of your previous functions to return a number incremented by 1.
 
 ```js
-const inc = ___; // <-- function definition
-inc(5); // 6
-inc(inc(5)); // 7
+const increment = ___; // <-- function definition
+increment(5); // 6
+increment(increment(5)); // 7
 ```
 
-5. Write a function `addf` that adds from two invocations).
+5. Write a function `addF` that adds from two invocations).
 
 ```js
-const add3 = addf(3);
+const add3 = addF(3);
 const result = add3(4);
 console.log(result); // 7
 
-const result2 = addf(5)(6);
+const result2 = addF(5)(6);
 console.log(result2); // 11
 ```
 
@@ -52,39 +52,39 @@ add3(4); // 7
 ```
 
 ```js
-const mul5 = curry(mul, 5);
-const result = mul5(6);
+const multiply5 = curry(multiply, 5);
+const result = multiply5(6);
 console.log(result); // 30
 ```
 
-7. Write a function `liftf` that takes a binary function, and makes it callable with two invocations.
+7. Write a function `liftF` that takes a binary function, and makes it callable with two invocations.
 
 ```js
 const add = (a, b) => a + b;
-const addf = liftf(add);
-const add3 = addf(3);
+const addF = liftF(add);
+const add3 = addF(3);
 const result = add3(4);
 console.log(result); // 7
 ```
 
 ```js
-const mul = (a, b) => a * b;
-const mulf = liftf(mul);
-const mul5 = mulf(5);
-const result = mul5(6);
+const multiply = (a, b) => a * b;
+const multiplyF = liftF(multiply);
+const multiply5 = multiplyF(5);
+const result = multiply5(6);
 console.log(result); // 30
 ```
 
 8. Write a function `twice` that takes a binary function and returns a unary function (_a function that takes one argument_) that passes its argument to the binary function twice.
 
 ```js
-const doubl = twice(add);
-const result = doubl(11);
+const double = twice(add);
+const result = double(11);
 console.log(result); // 22
 ```
 
 ```js
-const square = twice(mul);
+const square = twice(multiply);
 const result = square(11);
 console.log(result); // 121
 ```
@@ -97,20 +97,20 @@ console.log(result); // 121
 
 ## More Tasks
 
-10. Write a function `composeu` that takes two unary functions and returns a unary function that calls them both, in argument order.
+10. Write a function `composeU` that takes two unary functions and returns a unary function that calls them both, in argument order.
 
 ```js
 const double = (a) => a * 2;
 const square = (a) => a ** 2;
-composeu(double, square)(5); // 100
-composeu(square, double)(5); // 50
+composeU(double, square)(5); // 100
+composeU(square, double)(5); // 50
 ```
 
-11. Write a function `composeb` that takes two binary functions and returns a function that calls them both. The return value of the first function will get passed as the first argument to the second one.
+11. Write a function `composeB` that takes two binary functions and returns a function that calls them both. The return value of the first function will get passed as the first argument to the second one.
 
 ```js
-mul(add(2, 3), 7); // 35
-composeb(add, mul)(2, 3, 7); // 35
+multiply(add(2, 3), 7); // 35
+composeB(add, multiply)(2, 3, 7); // 35
 ```
 
 12. Write a `limit` function that allows a binary function to be called a limited number of times.
@@ -152,7 +152,7 @@ index(); // undefined
 16. Write an `element` function that takes an array and a generator and returns a generator that will produce elements from the array.
 
 ```js
-const ele = element(['a', 'b', 'c', 'd'], fromTo(1, 3));
+const ele = element(["a", "b", "c", "d"], fromTo(1, 3));
 ele(); // 'b'
 ele(); // 'c'
 ele(); // undefined
@@ -161,7 +161,7 @@ ele(); // undefined
 17. Modify the `element` function so that the generator argument is optional. If a generator in not provided, then each of the elements of the array will be produced.
 
 ```js
-const ele = element(['a', 'b', 'c', 'd']);
+const ele = element(["a", "b", "c", "d"]);
 ele(); // 'a'
 ele(); // 'b'
 ele(); // 'c'
@@ -206,10 +206,10 @@ con(); // 1
 con(); // undefined
 ```
 
-21. Make a function `fibonaccif` that returns a generator that will return consecutive fibonacci numbers starting with the first two arguments.
+21. Make a function `fibonacciF` that returns a generator that will return consecutive fibonacci numbers starting with the first two arguments.
 
 ```js
-const fib = fibonaccif(0, 1);
+const fib = fibonacciF(0, 1);
 fib(); // 0
 fib(); // 1
 fib(); // 1
@@ -218,11 +218,11 @@ fib(); // 3
 fib(); // 5
 ```
 
-22. Make a function `gensymf` that makes a function that generates unique symbols.
+22. Make a function `genSymF` that makes a function that generates unique symbols.
 
 ```js
-const genG = gensymf('G');
-const genH = gensymf('H');
+const genG = genSymF("G");
+const genH = genSymF("H");
 genG(); // "G0"
 genH(); // "H0"
 genG(); // "G1"
@@ -231,12 +231,12 @@ genG(); // "G2"
 genH(); // "H2"
 ```
 
-23. Write a function `gensymff` that takes a unary function and a seed and returns a `gensymf`
+23. Write a function `genSymFF` that takes a unary function and a seed and returns a `gensymf`
 
 ```js
-const gensymf = gensymff(inc, 0);
-const genG = gensymf('G');
-const genH = gensymf('H');
+const genSymF = genSymFF(increment, 0);
+const genG = genSymF("G");
+const genH = genSymF("H");
 genG(); // "G1"
 genH(); // "H1"
 genG(); // "G2"
@@ -267,18 +267,18 @@ add.invoke(5, 7); // undefined
 ## Even More difficult tasks
 
 26. Implement `curry` so that it works with any number of arguments. `.call`
-   and `.apply` are your friends here. You'll also need to use the `arguments` key variable.
+    and `.apply` are your friends here. You'll also need to use the `arguments` key variable.
 
 ```js
 function multiply5(a, b, c, d, e) {
-  return a * b * c * d * e;
+	return a * b * c * d * e;
 }
 curry(multiply5, 1, 2)(3, 4, 5); // 120
 curry(multiply5, 1, 2, 3)(4, 5); // 120
 ```
 
-- Wow, that was ugly. Research ES6 spread syntax. Can you make it a lot more elegant?
-- Write `composeu` such that it can take any number of unary functions
+-   Wow, that was ugly. Research ES6 spread syntax. Can you make it a lot more elegant?
+-   Write `composeU` such that it can take any number of unary functions
 
 ## A much more difficult task
 

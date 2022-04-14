@@ -1,53 +1,53 @@
 const hof = {};
 
-hof.identity = function() {};
+hof.identity = function () {};
 
-hof.identityf = function() {};
+hof.identityF = function () {};
 
-hof.add = function() {};
+hof.add = function () {};
 
-hof.sub = function() {};
+hof.subtract = function () {};
 
-hof.mul = function() {};
+hof.multiply = function () {};
 
-hof.inc = function() {};
+hof.increment = function () {};
 
-hof.addf = function() {};
+hof.addF = function () {};
 
-hof.curry = function() {};
+hof.curry = function () {};
 
-hof.liftf = function() {};
+hof.liftF = function () {};
 
-hof.twice = function() {};
+hof.twice = function () {};
 
-hof.composeu = function() {};
+hof.composeU = function () {};
 
-hof.composeb = function() {};
+hof.composeB = function () {};
 
-hof.limit = function() {};
+hof.limit = function () {};
 
-hof.from = function() {};
+hof.from = function () {};
 
-hof.to = function() {};
+hof.to = function () {};
 
-hof.fromTo = function() {};
+hof.fromTo = function () {};
 
-hof.element = function() {};
+hof.element = function () {};
 
-hof.collect = function() {};
+hof.collect = function () {};
 
-hof.filter = function() {};
+hof.filter = function () {};
 
-hof.concat = function() {};
+hof.concat = function () {};
 
-hof.fibonaccif = function() {};
+hof.fibonacciF = function () {};
 
-hof.gensymf = function() {};
+hof.genSymF = function () {};
 
-hof.gensymff = function() {};
+hof.genSymFF = function () {};
 
-hof.counter = function() {};
+hof.counter = function () {};
 
-hof.revokable = function() {};
+hof.revokable = function () {};
 
 module.exports = hof;
