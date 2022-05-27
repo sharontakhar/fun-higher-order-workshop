@@ -500,7 +500,7 @@ describe("Advanced Functionality", () => {
 			const square = (x) => x * x;
 			const double = (x) => x + x;
 			const doubleSquareDouble = hof.composeU(double, square, double);
-			const doubleFourTimes = hof.composeu(
+			const doubleFourTimes = hof.composeU(
 				double,
 				double,
 				double,
