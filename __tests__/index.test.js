@@ -57,11 +57,11 @@ describe("Higher Order Functions", () => {
 				expect(hof.increment(-3)).toBe(-2);
 			});
 		});
-		describe("addF", () => {
+		describe.only("addF", () => {
 			it("returns a function on first invocation", () => {
 				expect(typeof hof.addF(3)).toBe("function");
 			});
-			it("returns the total of both invocations", () => {
+			it.only("returns the total of both invocations", () => {
 				expect(hof.addF(3)(4)).toBe(7);
 			});
 			it("returned function is reusable", () => {

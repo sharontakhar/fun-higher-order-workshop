@@ -1,18 +1,52 @@
 const hof = {};
 
-hof.identity = function () {};
+hof.identity = function (argsToReturn) {
+    return argsToReturn;
+};
 
-hof.identityF = function () {};
+hof.identityF = function (argsToReturn) {
+    function identity(){
+        return argsToReturn;
+    }
+return identity
 
-hof.add = function () {};
+//arg is banana
+//function totallyNew(){
+//return banana
+// }
+//return banana
+};
 
-hof.subtract = function () {};
+hof.add = function (a , b) {
+    return a + b;
+};
 
-hof.multiply = function () {};
+hof.subtract = function (a , b) {
+    return a - b;
+};
 
-hof.increment = function () {};
+hof.multiply = function (a, b) {
+    return a * b;
+};
 
-hof.addF = function () {};
+hof.increment = function (a) {
+    a += 1;
+    console.log(a)
+    return a;
+    
+};
+
+hof.addF = function (banana) {
+
+
+    function newFuncToAdd(apple){
+        return banana + apple
+    };
+    
+  
+
+return newFuncToAdd
+};
 
 hof.curry = function () {};
 
