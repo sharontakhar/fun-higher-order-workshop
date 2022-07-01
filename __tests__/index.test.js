@@ -71,7 +71,7 @@ describe("Higher Order Functions", () => {
 				expect(add100(-100)).toBe(0);
 			});
 		});
-		describe.only("curry", () => {
+		describe("curry", () => {
 			it("will take a binary function and a single value as arguments and return a function", () => {
 				expect(typeof hof.curry(hof.add, 5)).toBe("function");
 			});
@@ -101,7 +101,7 @@ describe("Higher Order Functions", () => {
 	//  })
 
 	describe("Unary Functions", () => {
-		describe("twice", () => {
+		describe.only("twice", () => {
 			it("returns a function on first invocation", () => {
 				const double = hof.twice(hof.add);
 				expect(typeof double).toBe("function");

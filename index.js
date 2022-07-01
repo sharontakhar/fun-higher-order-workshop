@@ -52,9 +52,26 @@ hof.curry = function (binaryFunc, val1) {
     return innerCurry
 };
 
-hof.liftF = function () {};
+hof.liftF = function (banana) {
+  function inception(peaches){
+    function spinningTop (value1) {
+    return  banana(peaches,value1)
+    }       
+   return spinningTop
+}
+return inception
+}
+hof.twice = function (binaryFunc) {
 
-hof.twice = function () {};
+function mainFunc (firstValue){  
+    return binaryFunc (firstValue,secondValue)
+    }
+    return secondFunc
+}
+
+//return binaryFunc(value1,value2)
+
+
 
 hof.composeU = function () {};
 
