@@ -37,14 +37,9 @@ hof.increment = function (a) {
 };
 
 hof.addF = function (banana) {
-
-
     function newFuncToAdd(apple){
-        return banana + apple
-    };
+        return banana + apple};
     
-  
-
 return newFuncToAdd
 };
 
