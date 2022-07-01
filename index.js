@@ -61,12 +61,14 @@ hof.liftF = function (banana) {
 }
 return inception
 }
-hof.twice = function (binaryFunc) {
 
-function mainFunc (firstValue){  
-    return binaryFunc (firstValue,secondValue)
+
+hof.twice = function (binaryFunc) {
+ 
+function mainFunc (args){  
+    return binaryFunc (args, args)
     }
-    return secondFunc
+return mainFunc;
 }
 
 //return binaryFunc(value1,value2)
