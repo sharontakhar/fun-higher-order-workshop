@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": {
-    "url": "https://github.com/northcoders/w02-higher-order-fun.git",
+    "url": "git+https://github.com/northcoders/w02-higher-order-fun.git",
     "type": "git"
   },
   "author": "Mauro Gestoso <mauro@northcoders.com>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watch"
   },
   "devDependencies": {
-    "jest": "^26.4.2"
-  }
+    "jest": "^26.6.3"
+  },
+  "description": "## Goals",
+  "bugs": {
+    "url": "https://github.com/northcoders/w02-higher-order-fun/issues"
+  },
+  "homepage": "https://github.com/northcoders/w02-higher-order-fun#readme",
+  "keywords": []
 }
