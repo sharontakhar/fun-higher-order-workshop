@@ -43,7 +43,14 @@ hof.addF = function (banana) {
 return newFuncToAdd
 };
 
-hof.curry = function () {};
+hof.curry = function (binaryFunc, val1) {
+    function innerCurry(val2){
+        console.log(binaryFunc, val1, val2 , "<<<this")
+
+        return binaryFunc(val1, val2)
+    }
+    return innerCurry
+};
 
 hof.liftF = function () {};
 

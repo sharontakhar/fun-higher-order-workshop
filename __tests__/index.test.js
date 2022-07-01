@@ -57,11 +57,11 @@ describe("Higher Order Functions", () => {
 				expect(hof.increment(-3)).toBe(-2);
 			});
 		});
-		describe.only("addF", () => {
+		describe("addF", () => {
 			it("returns a function on first invocation", () => {
 				expect(typeof hof.addF(3)).toBe("function");
 			});
-			it.only("returns the total of both invocations", () => {
+			it("returns the total of both invocations", () => {
 				expect(hof.addF(3)(4)).toBe(7);
 			});
 			it("returned function is reusable", () => {
@@ -71,7 +71,7 @@ describe("Higher Order Functions", () => {
 				expect(add100(-100)).toBe(0);
 			});
 		});
-		describe("curry", () => {
+		describe.only("curry", () => {
 			it("will take a binary function and a single value as arguments and return a function", () => {
 				expect(typeof hof.curry(hof.add, 5)).toBe("function");
 			});
