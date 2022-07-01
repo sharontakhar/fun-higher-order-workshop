@@ -101,7 +101,7 @@ describe("Higher Order Functions", () => {
 	//  })
 
 	describe("Unary Functions", () => {
-		describe.only("twice", () => {
+		describe("twice", () => {
 			it("returns a function on first invocation", () => {
 				const double = hof.twice(hof.add);
 				expect(typeof double).toBe("function");
@@ -111,7 +111,8 @@ describe("Higher Order Functions", () => {
 				expect(double(3)).toBe(hof.add(3, 3));
 			});
 		});
-		describe("composeU", () => {
+
+		describe.only("composeU", () => {
 			it("returns a function on first invocation", () => {
 				const add100 = (x) => x + 100;
 				const add50 = (x) => x + 50;

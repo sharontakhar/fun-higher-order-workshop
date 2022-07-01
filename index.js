@@ -70,12 +70,20 @@ function mainFunc (args){
     }
 return mainFunc;
 }
-
 //return binaryFunc(value1,value2)
 
 
+hof.composeU = function (func1, func2) {
+   function functionOne(){
+       return func1
+   }
 
-hof.composeU = function () {};
+   function functionTwo(func2){
+      return func2(functionOne)
+   }
+   
+return functionTwo
+};
 
 hof.composeB = function () {};
 
